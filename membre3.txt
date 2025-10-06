@@ -1,0 +1,2 @@
+Nom : Jimmy Chhan Rôle : Testeur Responsabilités : Tests
+              et validation du travail d'équipe
