@@ -1,3 +1,3 @@
-Nom : [Votre nom complet]
+Nom : Guibord Julien
 Rôle : Développeur
 Responsabilités : Développement et tests du code
