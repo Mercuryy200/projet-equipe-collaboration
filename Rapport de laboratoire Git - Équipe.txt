@@ -75,9 +75,19 @@ modifications du projet avec l'aide d'un graphique.
 ## 5. Apprentissages
 
 ### Ce que nous avons appris sur Git
-- [Apprentissage 1 : par exemple, l'importance de faire git pull régulièrement]
-- [Apprentissage 2 : par exemple, comment résoudre un conflit]
-- [Apprentissage 3 : par exemple, l'utilité des branches]
+- [Apprentissage 1] 
+    Il est important de faire un git pull avant de travailler, 
+    sinon des situations de conflit peuvent survenir.
+
+- [Apprentissage 2]
+    Lors d'un conflit, on peut accepter une des deux versions,
+    ou accepter les deux versions en même temps, puis faire un 
+    commit qui décris la résolution.
+
+- [Apprentissage 3]
+    Les branches permettent de travailler indépendement de la 
+    vraie version du programme et donc d'éviter les situations
+    de conflit.
 
 ### Ce que nous avons appris sur le travail d'équipe
 - [Apprentissage 1 : par exemple, l'importance de la communication]
