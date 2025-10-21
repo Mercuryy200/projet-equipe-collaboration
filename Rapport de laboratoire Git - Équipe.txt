@@ -90,8 +90,13 @@ modifications du projet avec l'aide d'un graphique.
     de conflit.
 
 ### Ce que nous avons appris sur le travail d'équipe
-- [Apprentissage 1 : par exemple, l'importance de la communication]
-- [Apprentissage 2 : par exemple, comment coordonner le travail]
+- [Apprentissage 1]
+    La communication est importante pour savoir si on peut pull
+    le travail de quelqu'un ou si on devrait attendre qu'il ait 
+    terminer ses tâches.
+- [Apprentissage 2]
+    Il est important de travailler autant que possible sur des 
+    fichiers différents pour éviter les situations de conflits. 
 
 ## 6. Conclusion
 [Rédigez une courte conclusion (5-10 lignes) sur votre expérience globale du laboratoire]
