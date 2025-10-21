@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratoire Git - Collaboration en équipe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-info div {
+            background-color: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #555;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .objectives {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-left: 5px solid #667eea;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .objectives ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .objectives li {
+            margin-bottom: 8px;
+        }
+        
+        .step {
+            background-color: #f9f9f9;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #764ba2;
+        }
+        
+        .responsible {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        
+        .code-block code {
+            display: block;
+            white-space: pre;
+        }
+        
+        .tip {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .screenshot {
+            background-color: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .vocab {
+            background-color: #e7f3ff;
+            border-left: 5px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .vocab strong {
+            color: #0066cc;
+        }
+        
+        .image-placeholder {
+            background-color: #e9ecef;
+            border: 2px dashed #6c757d;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .screenshot-box {
+            margin-top: 15px;
+            background-color: white;
+            border: 2px solid #28a745;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        
+        .screenshot-box span {
+            color: #28a745;
+            font-size: 1.1em;
+        }
+        
+        ol, ul {
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .toc h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        .scenario {
+            background-color: #fff9e6;
+            border: 2px solid #ffcc00;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .scenario strong {
+            color: #cc6600;
+        }
+        
+        .resources {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .resources a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .resources a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Laboratoire 4-5-6 : Collaboration en équipe</h1>
+            <p style="font-size: 1.2em; margin-top: 10px;">Apprendre à travailler ensemble avec Git et GitHub</p>
+            <div class="meta-info">
+                <div><strong>Durée :</strong> 4 à 5 heures</div>
+                <div><strong>Équipe :</strong> 3 ou 4 personnes</div>
+            </div>
+        </header>
+
+        <div class="toc">
+            <h3>Table des matières</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#partie1">Partie 1 : Configuration initiale du projet</a></li>
+                <li><a href="#partie2">Partie 2 : Ajout des collaborateurs</a></li>
+                <li><a href="#partie3">Partie 3 : Première collaboration sans conflit</a></li>
+                <li><a href="#partie4">Partie 4 : Situation de conflit simple</a></li>
+                <li><a href="#partie5">Partie 5 : Collaboration sur un fichier HTML</a></li>
+                <li><a href="#partie6">Partie 6 : Utilisation des branches</a></li>
+                <li><a href="#partie7">Partie 7 : Situations réalistes de collaboration</a></li>
+                <li><a href="#partie8">Partie 8 : Rapport final</a></li>
+                <li><a href="#evaluation">Critères d'évaluation</a></li>
+                <li><a href="#resources">Ressources supplémentaires</a></li>
+            </ul>
+        </div>
+
+        <section id="introduction">
+            <h2>Introduction</h2>
+            
+            <div class="objectives">
+                <h4>Objectifs d'apprentissage</h4>
+                <p>À la fin de ce laboratoire, vous serez capables de :</p>
+                <ul>
+                    <li>Connecter votre dépôt local à un dépôt distant hébergé sur GitHub</li>
+                    <li>Ajouter des collaborateurs à un projet pour travailler ensemble</li>
+                    <li>Effectuer des modifications de fichiers et enregistrer ces changements avec des commits</li>
+                    <li>Comprendre ce qu'est un conflit de fusion et apprendre à le résoudre</li>
+                    <li>Documenter votre travail à l'aide de captures d'écran pour constituer un rapport</li>
+                </ul>
+            </div>
+
+            <div class="vocab">
+                <h4>Vocabulaire de base</h4>
+                <ul>
+                    <li><strong>GitHub :</strong> Un site web qui héberge des dépôts Git en ligne, facilitant le travail d'équipe</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <strong>Conseil important :</strong> Prenez une capture d'écran à chaque étape importante mentionnée dans ce guide. Ces captures serviront de preuves de votre travail.
+            </div>
+        </section>
+
+        <section id="partie1">
+            <h2>Partie 1 : Configuration initiale du projet</h2>
+
+            <p>Dans cette première partie, un membre de l'équipe va créer le projet de base sur son ordinateur et le publier sur GitHub. Les autres membres pourront ensuite y accéder.</p>
+
+            <div class="step">
+                <h3>Étape 1.1 : Création du dépôt local</h3>
+                <span class="responsible">Personne responsable : Membre 1 (le chef d'équipe)</span>
+
+                <p>Le <strong>dépôt local</strong> est une copie de votre projet stockée directement sur votre ordinateur. Vous allez maintenant le créer.</p>
+
+                <h4>Instructions détaillées :</h4>
+                <ol>
+                    <li>Sur votre ordinateur, créez un nouveau dossier (par exemple sur le Bureau ou dans Documents) et nommez-le <code>projet-equipe-[votre-nom]</code></li>
+                    <li>Ouvrez le <strong>terminal</strong> (ou <strong>Git Bash</strong> si vous êtes sous Windows) et placez-vous dans ce dossier</li>
+                    <li>Tapez la commande suivante pour dire à Git de commencer à surveiller ce dossier :</li>
+                </ol>
+
+                <div class="code-block"><code>git init</code></div>
+
+                <div class="vocab">
+                    La commande <code>git init</code> transforme un dossier ordinaire en dépôt Git. C'est comme si vous disiez à Git : « Commence à surveiller ce dossier et garde une trace de tous les changements. »
+                </div>
+
+                <ol start="4">
+                    <li>Ouvrez <strong>Visual Studio Code</strong> dans ce dossier (vous pouvez le faire en tapant <code>code .</code> dans le terminal)</li>
+                    <li>Dans VS Code, créez un nouveau fichier et nommez-le <code>README.md</code></li>
+                    <li>Écrivez le texte suivant dans ce fichier :</li>
+                </ol>
+
+                <div class="code-block">
+                    <code># Projet de collaboration - Équipe [Nom de votre équipe]
+## Description
+Ce projet nous permet d'apprendre à utiliser Git en équipe.
+                        </code>
+                </div>
+
+                <div class="tip">
+                    Le fichier <code>README.md</code> est un document qui explique ce qu'est votre projet. Le <code>.md</code> signifie « Markdown », un format de texte simple qui permet de faire des titres, des listes, etc.
+                </div>
+
+                <ol start="7">
+                    <li>Sauvegardez le fichier.</li>
+                    <li>Retournez dans le terminal et tapez :</li>
+                </ol>
+
+                <div class="code-block"><code>git add README.md</code></div>
+                <div class="code-block"><code>git commit -m "Initialisation du projet"</code></div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 1.2 : Création des comptes GitHub et du dépôt distant</h3>
+                <span class="responsible">Personnes responsables : TOUS les membres de l'équipe</span>
+
+                <p>GitHub est une plateforme en ligne qui permet de stocker et de partager des projets Git. Chaque membre de l'équipe doit d'abord créer un compte personnel.</p>
+
+                <div class="warning">
+                    <strong>Important :</strong> Tous les membres doivent créer leur propre compte GitHub avant de continuer. Sans compte, vous ne pourrez pas collaborer sur le projet.
+                </div>
+
+                <h4>Instructions pour CHAQUE membre de l'équipe :</h4>
+                <ol>
+                    <li>Ouvrez votre navigateur web et allez sur : <a href="https://github.com" target="_blank">https://github.com</a></li>
+                    <li>Cliquez sur le bouton <strong>« Sign up »</strong> (S'inscrire) en haut à droite de la page</li>
+                    <li>Remplissez le formulaire d'inscription en fournissant :
+                        <ul>
+                            <li>Votre adresse courriel (utilisez votre courriel scolaire si possible)</li>
+                            <li>Un mot de passe sécurisé (avec des lettres, des chiffres et des symboles)</li>
+                            <li>Un nom d'utilisateur professionnel (évitez les surnoms trop informels car ce compte pourra vous servir plus tard dans vos études)</li>
+                        </ul>
+                    </li>
+                    <li>Consultez votre boîte de réception et cliquez sur le lien de vérification envoyé par GitHub</li>
+                    <li>Complétez votre profil si GitHub vous le demande</li>
+                    <li><strong>Notez bien votre nom d'utilisateur GitHub</strong> sur un papier ou dans un document, vous en aurez besoin</li>
+                </ol>
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (CHAQUE membre) :</strong> Une fois votre compte créé, prenez une capture d'écran de votre page de profil GitHub où l'on voit clairement votre nom d'utilisateur.
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <div></div>
+                        <img src="GITHUBCOMPTE.jpg" alt="compte git hub" width="800px" >
+                    </div>
+                </div>
+
+                <hr style="margin: 30px 0; border: 1px solid #ddd;">
+
+                <h4>Instructions pour le Membre 1 uniquement (création du dépôt distant) :</h4>
+                <p style="font-style: italic; margin-bottom: 15px;">Une fois que tous les membres ont créé leur compte, le Membre 1 peut créer le dépôt en ligne :</p>
+
+                <ol>
+                    <li>Connectez-vous à votre compte GitHub</li>
+                    <li>Cliquez sur le bouton vert <strong>« New repository »</strong> (Nouveau dépôt) ou sur le symbole <strong>+</strong> en haut à droite, puis sélectionnez « New repository »</li>
+                    <li>Dans le champ « Repository name » (Nom du dépôt), tapez : <code>projet-equipe-collaboration</code></li>
+                    <li>Dans le champ « Description », écrivez : <em>« Laboratoire Git - Collaboration en équipe »</em></li>
+                    <li>Laissez le dépôt en mode <strong>Public</strong> (cela signifie que n'importe qui peut voir votre projet, mais seuls vos collaborateurs pourront le modifier)</li>
+                    <li><strong>Important :</strong> Ne cochez PAS la case « Initialize with README » car vous avez déjà créé un fichier README localement</li>
+                    <li>Cliquez sur le bouton vert <strong>« Create repository »</strong></li>
+                </ol>
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (Membre 1) :</strong> Prenez une capture d'écran de la page de votre nouveau dépôt GitHub. Assurez-vous que l'URL du dépôt soit visible (elle ressemble à <code>https://github.com/votre-nom/projet-equipe-collaboration</code>).
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 1.3 : Connexion du dépôt local au dépôt distant</h3>
+                <span class="responsible">Personne responsable : Membre 1</span>
+
+                <p>Maintenant que le dépôt local et le dépôt GitHub existent, il faut les relier ensemble pour pouvoir synchroniser les fichiers entre les deux.</p>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li>Sur la page de votre dépôt GitHub, copiez l'URL qui apparaît (elle se termine par <code>.git</code>)</li>
+                    <li>Retournez dans votre terminal et tapez la commande suivante en remplaçant <code>[URL-de-votre-depot]</code> par l'URL que vous venez de copier :</li>
+                </ol>
+
+                <div class="code-block"><code>git remote add origin [URL-de-votre-depot]</code></div>
+
+                <div class="vocab">
+                    Cette commande crée un lien entre votre dépôt local et le dépôt GitHub. Le mot <code>origin</code> est simplement un nom qui désigne ce dépôt distant.
+                </div>
+
+                <ol start="3">
+                    <li>Envoyez maintenant votre premier commit vers GitHub avec cette commande :</li>
+                </ol>
+
+                <div class="code-block"><code>git push -u origin master</code></div>
+
+                <div class="vocab">
+                    <strong>Vocabulaire technique :</strong>
+                    <ul>
+                        <li><strong>Dépôt distant :</strong> Une copie de votre projet stockée sur un serveur en ligne (ici, sur GitHub) et accessible à toute l'équipe</li>
+                        <li><strong>origin :</strong> Le nom par défaut que Git donne au dépôt distant principal</li>
+                        <li><strong>push :</strong> Envoyer vos modifications locales vers le dépôt distant (imaginez que vous « poussez » vos fichiers vers le cloud)</li>
+                    </ul>
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (2 images) :</strong>
+                    <br>1. Terminal montrant la commande <code>git push</code> réussie
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                    <br>2. Page GitHub montrant le fichier README.md visible dans votre dépôt
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie2">
+            <h2>Partie 2 : Ajout des collaborateurs</h2>
+
+            <p>Maintenant que le projet est en ligne sur GitHub, il faut inviter les autres membres de l'équipe pour qu'ils puissent y contribuer.</p>
+
+            <div class="step">
+                <h3>Étape 2.1 : Invitation des membres de l'équipe</h3>
+                <span class="responsible">Personne responsable : Membre 1</span>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li>Sur la page GitHub de votre dépôt, cliquez sur l'onglet <strong>« Settings »</strong> (Paramètres) en haut de la page</li>
+                    <li>Dans le menu de gauche, trouvez et cliquez sur <strong>« Collaborators »</strong> (Collaborateurs)</li>
+                    <li>GitHub vous demandera probablement de confirmer votre identité en entrant votre mot de passe</li>
+                    <li>Cliquez sur le bouton vert <strong>« Add people »</strong> (Ajouter des personnes)</li>
+                    <li>Dans la boîte de recherche qui apparaît, tapez le <strong>nom d'utilisateur GitHub (idéalement son mail)</strong> d'un de vos coéquipiers</li>
+                    <li>Sélectionnez le bon compte dans les résultats et cliquez sur <strong>« Add [nom] to this repository »</strong></li>
+                    <li>Répétez les étapes 4 à 6 pour chaque membre de l'équipe</li>
+                </ol>
+
+                <div class="tip">
+                    Vérifiez bien que vos coéquipiers vous ont donné leur nom d'utilisateur GitHub exact. Attention aux fautes de frappe, aux majuscules et aux caractères spéciaux !
+                </div>
+                <div class="screenshot">
+                    <strong>Capture d'écran requise :</strong> Prenez une capture d'écran de la page « Collaborators » montrant les invitations envoyées (avec les noms d'utilisateur de vos coéquipiers visibles).
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 2.2 : Acceptation de l'invitation et clonage du projet</h3>
+                <span class="responsible">Personnes responsables : Membres 2 et 3</span>
+
+                <p>Les membres invités doivent maintenant accepter l'invitation et obtenir une copie du projet sur leur propre ordinateur.</p>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li>Consultez votre boîte de réception email (l'invitation de GitHub y a été envoyée)</li>
+                    <li>Cliquez sur le lien dans le courriel OU connectez-vous à GitHub et cliquez sur l'icône de notification (en forme de cloche) en haut à droite</li>
+                    <li>Cliquez sur le bouton <strong>« Accept invitation »</strong> (Accepter l'invitation)</li>
+                    <li>Vous serez redirigés vers la page du dépôt du projet</li>
+                    <li>Sur cette page, cliquez sur le bouton vert <strong>« Code »</strong></li>
+                    <li>Assurez-vous que l'onglet « HTTPS » est sélectionné, puis copiez l'URL qui s'affiche</li>
+                    <li>Sur votre ordinateur, créez un dossier de travail nommé <code>Laboratoire-Git</code> (vous pouvez le créer sur le Bureau ou dans Documents)</li>
+                    <li>Ouvrez le terminal (ou Git Bash) et déplacez-vous dans ce nouveau dossier :</li>
+                </ol>
+
+                <div class="code-block"><code>cd Chemin/vers/Laboratoire-Git</code></div>
+
+                <div class="tip">
+                    <strong>Astuce Windows :</strong> Vous pouvez faire un clic droit directement dans le dossier « Laboratoire-Git » et sélectionner « Git Bash Here » pour ouvrir le terminal au bon endroit.
+                </div>
+
+                <ol start="9">
+                    <li>Tapez maintenant la commande suivante pour créer une copie complète du projet sur votre ordinateur (remplacez <code>[URL-du-depot]</code> par l'URL copiée plus tôt) :</li>
+                </ol>
+
+                <div class="code-block"><code>git clone [URL-du-depot]</code></div>
+
+                <ol start="10">
+                    <li>Une fois le clonage terminé, entrez dans le dossier du projet :</li>
+                </ol>
+
+                <div class="code-block"><code>cd projet-equipe-collaboration</code></div>
+
+                <div class="vocab">
+                    <strong>Qu'est-ce que le clonage ?</strong>
+                    <br>La commande <code>git clone</code> crée une copie complète d'un dépôt distant sur votre ordinateur. Cette copie inclut tous les fichiers du projet ainsi que tout l'historique des modifications. C'est comme télécharger un dossier complet depuis internet.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (CHAQUE membre 2 et 3) :</strong> Prenez une capture d'écran de votre terminal montrant le clonage réussi et la liste des fichiers dans le dossier (utilisez la commande <code>ls</code> sur Mac/Linux ou <code>dir</code> sur Windows).
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <br>
+                        <img src="GITCLONE.jpg" alt="clone" width="600px">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie3">
+            <h2>Partie 3 : Première collaboration sans conflit</h2>
+
+            <p>Dans cette partie, chaque membre va créer son propre fichier. Comme les fichiers seront différents, il n'y aura pas de conflit. Cela vous permettra de comprendre le processus de base pour partager votre travail.</p>
+
+            <div class="step">
+                <h3>Étape 3.1 : Création de fichiers par différents membres</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Chaque membre va créer son propre fichier pour s'exercer aux commandes Git de base sans risque de conflit.
+                </div>
+
+                <h4>Instructions pour le Membre 1 :</h4>
+                <ol>
+                    <li>Ouvrez Visual Studio Code dans le dossier de votre projet</li>
+                    <li>Créez un nouveau fichier et nommez-le <code>membre1.txt</code></li>
+                    <li>Écrivez le contenu suivant dans ce fichier :</li>
+                </ol>
+
+                <div class="code-block"><code>Nom : [Votre nom complet]
+Rôle : Chef d'équipe
+Responsabilités : Coordination du projet et gestion du dépôt GitHub</code></div>
+
+                <ol start="4">
+                    <li>Sauvegardez le fichier (Ctrl+S ou Cmd+S)</li>
+                    <li>Dans le terminal, enregistrez et envoyez ce fichier vers GitHub :</li>
+                </ol>
+
+                <div class="code-block"><code>git add membre1.txt
+git commit -m "Ajout des informations du membre 1"
+git push</code></div>
+
+                <h4>Instructions pour le Membre 2 :</h4>
+                <ol>
+                    <li>Avant de commencer à travailler, récupérez toujours les dernières modifications de l'équipe :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <div class="vocab">
+                    La commande <code>git pull</code> télécharge les modifications que vos coéquipiers ont envoyées sur GitHub. C'est l'inverse de <code>git push</code>. Prenez l'habitude de faire un <code>git pull</code> avant de commencer à travailler !
+                </div>
+
+                <ol start="2">
+                    <li>Ouvrez Visual Studio Code dans le dossier du projet</li>
+                    <li>Créez un nouveau fichier nommé <code>membre2.txt</code></li>
+                    <li>Écrivez le contenu suivant :</li>
+                </ol>
+
+                <div class="code-block"><code>Nom : [Votre nom complet]
+Rôle : Développeur
+Responsabilités : Développement et tests du code</code></div>
+
+                <ol start="5">
+                    <li>Sauvegardez le fichier</li>
+                    <li>Enregistrez et envoyez vos modifications :</li>
+                </ol>
+
+                <div class="code-block"><code>git add membre2.txt
+git commit -m "Ajout des informations du membre 2"
+git push</code></div>
+
+                <h4>Instructions pour le Membre 3 :</h4>
+                <ol>
+                    <li>Récupérez d'abord les modifications récentes :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <ol start="2">
+                    <li>Ouvrez Visual Studio Code</li>
+                    <li>Créez un fichier nommé <code>membre3.txt</code></li>
+                    <li>Écrivez le contenu suivant :</li>
+                </ol>
+
+                <div class="code-block"><code>Nom : [Votre nom complet]
+Rôle : Testeur
+Responsabilités : Tests et validation du travail d'équipe</code></div>
+
+                <ol start="5">
+                    <li>Sauvegardez le fichier</li>
+                    <li>Enregistrez et envoyez :</li>
+                </ol>
+
+                <div class="code-block"><code>git add membre3.txt
+git commit -m "Ajout des informations du membre 3"
+git push</code></div>
+
+                <div class="tip">
+                    <strong>Bonne pratique :</strong> Toujours faire un <code>git pull</code> avant de commencer à travailler. Cela vous permet de récupérer les modifications de vos coéquipiers et d'éviter les conflits.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (CHAQUE membre) :</strong> Prenez deux captures :
+                    <br>1. Votre terminal montrant les commandes git add, commit et push
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <img src="GITPULL.jpg" alt="pull">
+                    </div>
+                    <br>2. La page GitHub montrant tous les fichiers (membre1.txt, membre2.txt, membre3.txt)
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <img src="GITFICHIERS.jpg" alt="fichiers equipe" width="600px">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie4">
+            <h2>Partie 4 : Situation de conflit simple</h2>
+
+            <p>Un <strong>conflit</strong> se produit lorsque deux personnes modifient la même partie d'un même fichier en même temps. C'est une situation normale dans le travail d'équipe, et Git vous aide à la gérer.</p>
+
+            <div class="step">
+                <h3>Étape 4.1 : Création volontaire d'un conflit</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Comprendre ce qui se passe quand deux personnes modifient le même fichier simultanément. Les conflits sont normaux et il est important de savoir les résoudre.
+                </div>
+
+                <div class="scenario">
+                    <strong>Scénario :</strong> Les membres 1 et 2 vont tous les deux modifier le fichier README.md en même temps, sans se coordonner.
+                </div>
+
+                <h4>Instructions pour le Membre 1 :</h4>
+                <ol>
+                    <li>Ouvrez le fichier <code>README.md</code> dans Visual Studio Code</li>
+                    <li>Ajoutez le texte suivant à la fin du fichier :</li>
+                </ol>
+
+                <div class="code-block"><code>## Membres de l'équipe
+- Chef d'équipe : [Votre nom]</code></div>
+
+                <ol start="3">
+                    <li>Sauvegardez le fichier, puis enregistrez et envoyez les modifications :</li>
+                </ol>
+
+                <div class="code-block"><code>git add README.md
+git commit -m "Ajout de la section chef d'équipe"
+git push</code></div>
+
+                <h4>Instructions pour le Membre 2 :</h4>
+                
+                <div class="warning">
+                    <strong>Important :</strong> NE FAITES PAS de <code>git pull</code> avant de commencer ! C'est volontaire pour créer un conflit et apprendre à le gérer.
+                </div>
+
+                <ol>
+                    <li>Ouvrez le fichier <code>README.md</code> dans Visual Studio Code</li>
+                    <li>Ajoutez le texte suivant à la fin du fichier :</li>
+                </ol>
+
+                <div class="code-block"><code>## Membres de l'équipe
+- Développeur : [Votre nom]</code></div>
+
+                <ol start="3">
+                    <li>Sauvegardez et enregistrez vos modifications :</li>
+                </ol>
+
+                <div class="code-block"><code>git add README.md
+git commit -m "Ajout de la section développeur"</code></div>
+
+                <ol start="4">
+                    <li>Essayez maintenant d'envoyer vos modifications vers GitHub :</li>
+                </ol>
+
+                <div class="code-block"><code>git push</code></div>
+
+                <div class="warning">
+                    <strong>Résultat attendu :</strong> Git va rejeter votre tentative d'envoi avec un message d'erreur. Ce message vous informe que le dépôt distant contient des modifications que vous n'avez pas encore récupérées. Vous verrez quelque chose comme :
+                    <br><br>
+                    <code style="color: #dc3545;">! [rejected] main -> main (fetch first)</code>
+                </div>
+
+                <div class="vocab">
+                    <strong>Pourquoi cette erreur ?</strong>
+                    <br>Git vous empêche d'écraser le travail du Membre 1. Il vous demande d'abord de récupérer ses modifications avec <code>git pull</code>, puis de fusionner les deux versions.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (Membre 2) :</strong> Prenez une capture d'écran de votre terminal montrant le message d'erreur lorsque le push est rejeté.
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <img src="GITERREUR.jpg" alt="erreur conflit">
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 4.2 : Résolution du conflit</h3>
+                <span class="responsible">Personne responsable : Membre 2</span>
+
+                <h4>Instructions détaillées :</h4>
+                <ol>
+                    <li>Récupérez les modifications du dépôt distant :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <div class="warning">
+                    <strong>Résultat :</strong> Git va détecter un conflit car les deux versions du fichier ont modifié la même zone. Un message vous l'indiquera.
+                </div>
+
+                <ol start="2">
+                    <li>Ouvrez le fichier <code>README.md</code> dans Visual Studio Code. Vous verrez quelque chose comme ceci :</li>
+                </ol>
+
+                <div class="code-block"><code>## Membres de l'équipe
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+- Développeur : [Nom Membre 2]
+=======
+- Chef d'équipe : [Nom Membre 1]
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; [identifiant du commit]</code></div>
+
+                <div class="vocab">
+                    <h4>Explication des symboles de conflit :</h4>
+                    <ul>
+                        <li><strong>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</strong> : Marque le début de vos modifications locales (ce que vous avez écrit)</li>
+                        <li><strong>=======</strong> : Sépare vos modifications de celles provenant de GitHub</li>
+                        <li><strong>&gt;&gt;&gt;&gt;&gt;&gt;&gt; [id]</strong> : Marque la fin des modifications provenant du dépôt distant (ce qu'a écrit le Membre 1)</li>
+                    </ul>
+                </div>
+                <ol start="3">
+                    <li>Pour résoudre le conflit, modifiez le fichier pour combiner les deux versions. Remplacez tout le bloc de conflit (y compris les marqueurs) par :</li>
+                </ol>
+
+                <div class="code-block"><code>## Membres de l'équipe
+- Chef d'équipe : [Nom Membre 1]
+- Développeur : [Nom Membre 2]</code></div>
+
+                <ol start="4">
+                    <li>Vérifiez bien que vous avez supprimé tous les marqueurs de conflit (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+                    <li>Sauvegardez le fichier et finalisez la résolution :</li>
+                </ol>
+
+                <div class="code-block"><code>git add README.md
+git commit -m "Résolution du conflit sur README.md"
+git push</code></div>
+
+                <div class="tip">
+                    <strong>Conseil :</strong> Lors de la résolution d'un conflit, assurez-vous de garder les informations importantes des deux versions. Communiquez avec votre équipe si vous n'êtes pas certain de ce qu'il faut conserver.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Captures d'écran requises (3 captures pour le Membre 2) :</strong>
+                    <br>1. Fichier README.md avec les marqueurs de conflit visibles
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <img src="GITCONFLIT.jpg" alt="">
+                    </div>
+                    <br>2. Fichier README.md après résolution (sans les marqueurs)
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <img src="GITRESOLUTION.jpg" alt="">
+                    </div>
+                    <br>3. Terminal montrant la résolution réussie (commit et push)
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                        <img src="GITCOMMITPUSH.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie5">
+            <h2>Partie 5 : Collaboration sur un fichier HTML</h2>
+
+            <p>Dans cette partie, vous allez créer une page web simple en HTML et apprendre à collaborer sur ce type de fichier.</p>
+
+            <div class="step">
+                <h3>Étape 5.1 : Création du fichier HTML de base</h3>
+                <span class="responsible">Personne responsable : Membre 1</span>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li>Ouvrez Visual Studio Code</li>
+                    <li>Créez un nouveau fichier nommé <code>index.html</code></li>
+                    <li>Copiez le code HTML suivant dans ce fichier :</li>
+                </ol>
+
+                <div class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Projet d'équipe&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Notre projet collaboratif&lt;/h1&gt;
+    
+    &lt;!-- Section à compléter par les membres --&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+
+                <div class="vocab">
+                    <strong>Qu'est-ce que le HTML ?</strong>
+                    <br>HTML (HyperText Markup Language) est le langage utilisé pour créer des pages web. Les balises comme <code>&lt;h1&gt;</code> (titre) ou <code>&lt;body&gt;</code> (corps de la page) donnent une structure au contenu.
+                </div>
+
+                <ol start="4">
+                    <li>Sauvegardez le fichier</li>
+                    <li>Enregistrez et envoyez ce fichier vers GitHub :</li>
+                </ol>
+
+                <div class="code-block"><code>git add index.html
+git commit -m "Création du fichier HTML de base"
+git push</code></div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (2 images) :</strong>
+                    <br>1. Code HTML dans VS Code
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                    <br>2. Page GitHub montrant le nouveau fichier index.html
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 5.2 : Ajout de sections par chaque membre</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Chaque membre ajoute une section différente dans la page HTML pour enrichir le contenu.
+                </div>
+
+                <h4>Instructions pour le Membre 2 :</h4>
+                <ol>
+                    <li>Récupérez les modifications :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <ol start="2">
+                    <li>Ouvrez le fichier <code>index.html</code> dans VS Code</li>
+                    <li>Ajoutez une section "À propos" juste avant la balise <code>&lt;/body&gt;</code> :</li>
+                </ol>
+
+                <div class="code-block"><code>    &lt;section id="apropos"&gt;
+        &lt;h2&gt;À propos de nous&lt;/h2&gt;
+        &lt;p&gt;Nous sommes une équipe de [nombre] personnes travaillant sur Git.&lt;/p&gt;
+    &lt;/section&gt;</code></div>
+
+                <ol start="4">
+                    <li>Sauvegardez, enregistrez et envoyez :</li>
+                </ol>
+
+                <div class="code-block"><code>git add index.html
+git commit -m "Ajout de la section À propos"
+git push</code></div>
+
+                <h4>Instructions pour le Membre 3 :</h4>
+                <ol>
+                    <li>Récupérez les modifications :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <ol start="2">
+                    <li>Ouvrez le fichier <code>index.html</code> dans VS Code</li>
+                    <li>Ajoutez une section "Contact" juste avant la balise <code>&lt;/body&gt;</code> :</li>
+                </ol>
+
+                <div class="code-block"><code>    &lt;section id="contact"&gt;
+        &lt;h2&gt;Contactez-nous&lt;/h2&gt;
+        &lt;p&gt;Email : equipe@example.com&lt;/p&gt;
+    &lt;/section&gt;</code></div>
+
+                <ol start="4">
+                    <li>Sauvegardez, enregistrez et envoyez :</li>
+                </ol>
+
+                <div class="code-block"><code>git add index.html
+git commit -m "Ajout de la section Contact"
+git push</code></div>
+
+                <div class="tip">
+                    <strong>Pour voir le résultat :</strong> Double-cliquez sur le fichier index.html dans votre dossier pour l'ouvrir dans votre navigateur web et voir à quoi ressemble la page.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (CHAQUE membre 2 et 3, 2 images chacun) :</strong>
+                    <br>1. Code HTML modifié dans VS Code
+                    <div class="screenshot-box">
+                        <span><img src="GIT5-2MODIFS.jpg" alt=""></span>
+                    </div>
+                    <br>2. Résultat dans le navigateur (ouvrez index.html)
+                    <div class="screenshot-box">
+                        <span><img src="GIT5-2HTML.jpg" alt=""></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 5.3 : Conflit sur le fichier HTML</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Créer et résoudre un conflit sur un élément HTML spécifique.
+                </div>
+
+                <div class="scenario">
+                    <strong>Scénario :</strong> Les membres 2 et 3 vont modifier le titre principal <code>&lt;h1&gt;</code> en même temps.
+                </div>
+
+                <h4>Instructions pour le Membre 2 :</h4>
+                <ol>
+                    <li>Ouvrez le fichier <code>index.html</code> dans VS Code</li>
+                    <li>Modifiez le titre pour qu'il devienne :</li>
+                </ol>
+
+                <div class="code-block"><code>    &lt;h1&gt;Projet collaboratif - Apprentissage de Git&lt;/h1&gt;</code></div>
+
+                <ol start="3">
+                    <li>Sauvegardez, enregistrez et envoyez :</li>
+                </ol>
+
+                <div class="code-block"><code>git add index.html
+git commit -m "Modification du titre principal"
+git push</code></div>
+
+                <h4>Instructions pour le Membre 3 (sans faire de pull d'abord) :</h4>
+                
+                <div class="warning">
+                    <strong>Important :</strong> NE FAITES PAS de <code>git pull</code> avant de commencer !
+                </div>
+
+                <ol>
+                    <li>Ouvrez le fichier <code>index.html</code> dans VS Code</li>
+                    <li>Modifiez le titre pour qu'il devienne :</li>
+                </ol>
+
+                <div class="code-block"><code>    &lt;h1&gt;Notre super projet d'équipe avec Git&lt;/h1&gt;</code></div>
+
+                <ol start="3">
+                    <li>Sauvegardez et enregistrez :</li>
+                </ol>
+
+                <div class="code-block"><code>git add index.html
+git commit -m "Amélioration du titre"</code></div>
+
+                <ol start="4">
+                    <li>Essayez d'envoyer :</li>
+                </ol>
+
+                <div class="code-block"><code>git push</code></div>
+
+                <div class="warning">
+                    <strong>Conflit !</strong> Votre push sera rejeté comme dans l'exercice précédent.
+                </div>
+
+                <ol start="5">
+                    <li>Récupérez les modifications :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <ol start="6">
+                    <li>Résolvez le conflit dans <code>index.html</code> en choisissant l'une des deux versions ou en créant un titre qui combine les deux idées</li>
+                    <li>Par exemple, vous pourriez écrire :</li>
+                </ol>
+
+                <div class="code-block"><code>    &lt;h1&gt;Notre projet collaboratif d'apprentissage Git&lt;/h1&gt;</code></div>
+
+                <ol start="8">
+                    <li>Finalisez la résolution :</li>
+                </ol>
+
+                <div class="code-block"><code>git add index.html
+git commit -m "Résolution du conflit sur le titre"
+git push</code></div>
+
+                <div class="screenshot">
+                    <strong>Captures d'écran requises (3 captures pour le Membre 3) :</strong>
+                    <br>1. Fichier HTML avec les marqueurs de conflit
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                    <br>2. Fichier après résolution
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                    <br>3. Page web finale dans le navigateur
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie6">
+            <h2>Partie 6 : Utilisation des branches</h2>
+
+            <p>Les <strong>branches</strong> permettent de travailler sur des fonctionnalités séparées sans affecter le projet principal.</p>
+            <div class="step">
+                <h3>Étape 6.1 : Création d'une branche pour une nouvelle fonctionnalité</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Apprendre à créer et travailler sur une branche séparée pour ajouter du style CSS à la page HTML.
+                </div>
+
+                <h4>Instructions pour le Membre 1 :</h4>
+                <ol>
+                    <li>Créez une nouvelle branche pour ajouter un style CSS :</li>
+                </ol>
+
+                <div class="code-block"><code>git checkout -b ajout-style</code></div>
+
+                <div class="vocab">
+                    La commande <code>git checkout -b</code> crée une nouvelle branche ET vous place dessus en une seule étape. Vous travaillez maintenant sur la branche "ajout-style" au lieu de "main".
+                </div>
+
+                <ol start="2">
+                    <li>Ouvrez VS Code et créez un nouveau fichier nommé <code>style.css</code></li>
+                    <li>Copiez le code CSS suivant dans ce fichier :</li>
+                </ol>
+
+                <div class="code-block"><code>body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}</code></div>
+
+                <ol start="4">
+                    <li>Sauvegardez le fichier</li>
+                    <li>Modifiez maintenant le fichier <code>index.html</code> pour lier cette feuille de style. Ajoutez cette ligne dans la section <code>&lt;head&gt;</code> :</li>
+                </ol>
+
+                <div class="code-block"><code>    &lt;link rel="stylesheet" href="style.css"&gt;</code></div>
+
+                <ol start="6">
+                    <li>Sauvegardez, enregistrez sur votre branche et envoyez-la vers GitHub :</li>
+                </ol>
+
+                <div class="code-block"><code>git add .
+git commit -m "Ajout du fichier CSS avec styles de base"
+git push -u origin ajout-style</code></div>
+
+                <div class="vocab">
+                    La commande <code>git add .</code> ajoute tous les fichiers modifiés d'un coup. Le paramètre <code>-u origin ajout-style</code> crée la branche sur GitHub et établit un lien entre votre branche locale et la branche distante.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise :</strong> Terminal montrant la création de la branche et le push réussi.
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Étape 6.2 : Fusion de la branche (merge)</h3>
+                <span class="responsible">Personne responsable : Membre 1</span>
+
+                <p>Maintenant que le travail sur la branche est terminé, il faut la fusionner avec la branche principale pour que tout le monde bénéficie des nouveaux styles.</p>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li>Revenez sur la branche principale :</li>
+                </ol>
+
+                <div class="code-block"><code>git checkout main</code></div>
+
+                <ol start="2">
+                    <li>Fusionnez votre branche "ajout-style" avec la branche principale :</li>
+                </ol>
+
+                <div class="code-block"><code>git merge ajout-style</code></div>
+
+                <div class="vocab">
+                    La commande <code>git merge</code> intègre tous les changements d'une branche dans une autre. Ici, vous intégrez les fichiers CSS créés sur la branche "ajout-style" dans la branche "main".
+                </div>
+
+                <ol start="3">
+                    <li>Envoyez les modifications fusionnées vers GitHub :</li>
+                </ol>
+
+                <div class="code-block"><code>git push</code></div>
+
+                <ol start="4">
+                    <li>Tous les membres peuvent maintenant récupérer le nouveau style :</li>
+                </ol>
+
+                <div class="code-block"><code>git pull</code></div>
+
+                <div class="tip">
+                    Après avoir récupéré les modifications, ouvrez le fichier index.html dans votre navigateur pour voir la page web avec les nouveaux styles appliqués !
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise :</strong> Page web avec le nouveau style appliqué (ouvrez index.html dans votre navigateur).
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie7">
+            <h2>Partie 7 : Situations réalistes de collaboration</h2>
+
+            <p>Cette partie vous présente des situations courantes que vous rencontrerez en travaillant en équipe avec Git.</p>
+
+            <div class="step">
+                <h3>Situation 1 : Modification simultanée de fichiers différents</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Démontrer que Git gère très bien les modifications effectuées sur des fichiers différents, même si elles sont faites en même temps.
+                </div>
+
+                <h4>Instructions :</h4>
+                <ul>
+                    <li><strong>Membre 1 :</strong> Ouvrez <code>membre1.txt</code> dans VS Code et ajoutez une ligne décrivant une compétence que vous possédez</li>
+                    <li><strong>Membre 2 :</strong> Ouvrez <code>membre2.txt</code> dans VS Code et ajoutez une ligne décrivant une compétence que vous possédez</li>
+                    <li><strong>Les deux membres :</strong> Enregistrez et envoyez vos modifications en même temps (sans faire de <code>git pull</code> au préalable)</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>Résultat attendu :</strong> Aucun conflit ne se produira car vous avez modifié des fichiers différents. Le premier qui envoie ses modifications réussira immédiatement. Le second devra faire un <code>git pull</code>, puis pourra envoyer sans problème car Git combinera automatiquement les changements.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (les deux membres) :</strong> Terminal montrant le pull et le push réussis.
+                    <div class="screenshot-box">
+                        <span><img src="GITAJOUTMEMBRE2.jpg" alt="ajout a membre 2"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Situation 2 : Oubli de faire un pull</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Comprendre pourquoi il est important de toujours faire <code>git pull</code> avant de commencer à travailler.
+                </div>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li><strong>Membre 1 :</strong> Modifiez le fichier <code>README.md</code> en ajoutant une nouvelle ligne dans la description</li>
+                    <li><strong>Membre 1 :</strong> Enregistrez et envoyez vos modifications</li>
+                    <li><strong>Membre 2 :</strong> Sans faire de <code>git pull</code>, modifiez aussi <code>README.md</code> en ajoutant une ligne différente</li>
+                    <li><strong>Membre 2 :</strong> Enregistrez et essayez d'envoyer</li>
+                    <li><strong>Membre 2 :</strong> Faites un <code>git pull</code>, résolvez le conflit si nécessaire, puis envoyez</li>
+                </ol>
+
+                <div class="tip">
+                    <strong>Leçon importante :</strong> Prenez l'habitude de toujours commencer votre journée de travail par un <code>git pull</code> pour récupérer les dernières modifications de l'équipe. Cela évite beaucoup de conflits inutiles.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise (Membre 2) :</strong> Terminal montrant l'erreur de push, puis la résolution complète.
+                    <div class="screenshot-box">
+                        <span>
+                            <img src="GITERREURPUSH.jpg" alt="erreur push">
+                            <img src="GITPULLRESOLUTION.jpg" alt="resolution">
+                            <img src="GITCOMMITRESOLUTION.jpg" alt="resolution">
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Situation 3 : Annulation d'un commit</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Apprendre à revenir en arrière en cas d'erreur dans un commit.
+                </div>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li><strong>Un membre au choix :</strong> Créez un fichier nommé <code>erreur.txt</code> avec du contenu quelconque</li>
+                    <li>Enregistrez ce fichier avec un commit :</li>
+                </ol>
+
+                <div class="code-block"><code>git add erreur.txt
+git commit -m "Ajout d'un fichier par erreur"</code></div>
+
+                <ol start="3">
+                    <li>Pour annuler le dernier commit <strong>sans perdre les modifications</strong> :</li>
+                </ol>
+
+                <div class="code-block"><code>git reset --soft HEAD~1</code></div>
+
+                <div class="vocab">
+                    Avec l'option <code>--soft</code>, le commit est annulé mais le fichier reste dans votre dossier et dans la zone de préparation (prêt à être enregistré à nouveau si vous le souhaitez).
+                </div>
+
+                <ol start="4">
+                    <li>Pour annuler complètement le dernier commit <strong>et supprimer les modifications</strong> :</li>
+                </ol>
+
+                <div class="code-block"><code>git reset --hard HEAD~1</code></div>
+
+                <div class="warning">
+                    <strong>Attention :</strong> L'option <code>--hard</code> supprime définitivement vos modifications ! Utilisez cette commande avec beaucoup de précaution et seulement si vous êtes certain de vouloir tout effacer.
+                </div>
+
+                <div class="vocab">
+                    <strong>Explication de HEAD~1 :</strong>
+                    <br><code>HEAD</code> représente votre position actuelle dans l'historique. <code>HEAD~1</code> signifie "un commit avant HEAD", donc le commit précédent.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise :</strong> Terminal montrant l'annulation du commit. Utilisez <code>git log</code> avant et après l'annulation pour voir la différence.
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Situation 4 : Visualisation de l'historique</h3>
+                
+                <div class="scenario">
+                    <strong>Objectif :</strong> Apprendre à consulter l'historique complet des modifications du projet.
+                </div>
+
+                <h4>Instructions (tous les membres) :</h4>
+                <ol>
+                    <li>Pour voir l'historique complet des commits :</li>
+                </ol>
+
+                <div class="code-block"><code>git log</code></div>
+
+                <div class="vocab">
+                    Cette commande affiche tous les commits, du plus récent au plus ancien, avec l'auteur, la date et le message de chaque commit.
+                </div>
+
+                <ol start="2">
+                    <li>Pour une version condensée et plus facile à lire :</li>
+                </ol>
+
+                <div class="code-block"><code>git log --oneline</code></div>
+
+                <ol start="3">
+                    <li>Pour voir l'historique avec un graphique montrant les branches :</li>
+                </ol>
+
+                <div class="code-block"><code>git log --oneline --graph --all</code></div>
+
+                <div class="tip">
+                    Le format <code>--oneline --graph --all</code> est très utile pour visualiser comment les branches se divisent et se fusionnent au fil du temps. C'est comme une carte de votre projet.
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise :</strong> Terminal montrant l'historique avec la commande <code>git log --oneline --graph --all</code>
+                    <div class="screenshot-box">
+                        <span><img src="GITGRAPH.jpg" alt="graphique"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partie8">
+            <h2>Partie 8 : Rapport final</h2>
+
+            <p>Pour terminer ce laboratoire, vous allez créer un document récapitulatif qui résume tout votre travail.</p>
+
+            <div class="step">
+                <h3>Étape 8.1 : Création d'un document récapitulatif</h3>
+                <span class="responsible">Responsable : Toute l'équipe</span>
+
+                <h4>Instructions :</h4>
+                <ol>
+                    <li>Ouvrez VS Code</li>
+                    <li>Créez un fichier nommé <code>RAPPORT.md</code> dans votre dépôt</li>
+                    <li>Copiez le modèle suivant et remplissez chaque section :</li>
+                </ol>
+
+                <div class="code-block"><code># Rapport de laboratoire Git - Équipe [Nom]
+
+## 1. Membres de l'équipe
+- Membre 1 : [Nom complet - Rôle]
+- Membre 2 : [Nom complet - Rôle]
+- Membre 3 : [Nom complet - Rôle]
+
+## 2. Résumé des parties complétées
+
+### Partie 1 : Configuration initiale
+[Décrivez brièvement ce que vous avez fait et ce que vous avez appris]
+
+### Partie 2 : Ajout des collaborateurs
+[Décrivez le processus d'invitation et de clonage]
+
+### Partie 3 : Première collaboration
+[Expliquez comment vous avez créé vos fichiers individuels]
+
+### Partie 4 : Résolution de conflits
+[Décrivez le conflit rencontré et comment vous l'avez résolu]
+
+### Partie 5 : Collaboration HTML
+[Expliquez votre travail sur la page web]
+
+### Partie 6 : Utilisation des branches
+[Décrivez la création et la fusion de la branche]
+
+### Partie 7 : Situations réalistes
+[Résumez les différentes situations expérimentées]
+
+## 3. Captures d'écran
+
+### Étape 1.1 - Initialisation du dépôt
+![Description](chemin/vers/capture1.png)
+
+### Étape 1.2 - Création du compte GitHub
+![Description](chemin/vers/capture2.png)
+
+[Continuez pour toutes les étapes...]
+
+## 4. Difficultés rencontrées
+
+### Difficulté 1
+- **Problème** : [Décrivez le problème rencontré]
+- **Solution** : [Expliquez comment vous l'avez résolu]
+
+### Difficulté 2
+- **Problème** : [Décrivez le problème]
+- **Solution** : [Expliquez la solution trouvée]
+
+## 5. Apprentissages
+
+### Ce que nous avons appris sur Git
+- [Apprentissage 1 : par exemple, l'importance de faire git pull régulièrement]
+- [Apprentissage 2 : par exemple, comment résoudre un conflit]
+- [Apprentissage 3 : par exemple, l'utilité des branches]
+
+### Ce que nous avons appris sur le travail d'équipe
+- [Apprentissage 1 : par exemple, l'importance de la communication]
+- [Apprentissage 2 : par exemple, comment coordonner le travail]
+
+## 6. Conclusion
+[Rédigez une courte conclusion (5-10 lignes) sur votre expérience globale du laboratoire]</code></div>
+
+                <ol start="4">
+                    <li>Remplissez soigneusement chaque section avec vos informations et vos réflexions</li>
+                    <li>Insérez toutes vos captures d'écran dans le document</li>
+                    <li>Une fois le rapport terminé, enregistrez-le et envoyez-le :</li>
+                </ol>
+
+                <div class="code-block"><code>git add RAPPORT.md
+git commit -m "Ajout du rapport final du laboratoire"
+git push
+                                        </code>
+                </div>
+
+                <div class="screenshot">
+                    <strong>Capture d'écran requise :</strong> Page GitHub montrant le fichier RAPPORT.md complété et visible.
+                    <div class="screenshot-box">
+                        <span>Insérez ici votre capture d'écran</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluation">
+            <h2>Critères d'évaluation</h2>
+
+            <p>Votre travail sera évalué selon les critères suivants :</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>Points</th>
+                        <th>Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Configuration correcte du dépôt local et distant</td>
+                        <td>/10</td>
+                        <td>Dépôt créé, initialisé et connecté à GitHub</td>
+                    </tr>
+                    <tr>
+                        <td>Ajout et collaboration avec les membres</td>
+                        <td>/10</td>
+                        <td>Tous les membres ont été ajoutés et ont accepté l'invitation</td>
+                    </tr>
+                    <tr>
+                        <td>Gestion des commits et des push</td>
+                        <td>/15</td>
+                        <td>Commits clairs avec messages descriptifs</td>
+                    </tr>
+                    <tr>
+                        <td>Résolution des conflits</td>
+                        <td>/20</td>
+                        <td>Conflits créés volontairement et résolus correctement</td>
+                    </tr>
+                    <tr>
+                        <td>Utilisation des branches</td>
+                        <td>/15</td>
+                        <td>Branche créée, modifiée et fusionnée avec succès</td>
+                    </tr>
+                    <tr>
+                        <td>Qualité des captures d'écran et documentation</td>
+                        <td>/15</td>
+                        <td>Toutes les captures requises présentes et claires</td>
+                    </tr>
+                    <tr>
+                        <td>Rapport final complet et structuré</td>
+                        <td>/15</td>
+                        <td>Rapport bien rédigé avec analyse des apprentissages</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>/100</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="resources">
+            <h2>Ressources supplémentaires</h2>
+
+            <div class="resources">
+                <h4>Pour aller plus loin avec Git :</h4>
+                <ul>
+                    <li><strong>Git - Guide visuel :</strong> <a href="https://marklodato.github.io/visual-git-guide/index-fr.html" target="_blank">https://marklodato.github.io/visual-git-guide/index-fr.html</a></li>
+                    <li><strong>Documentation officielle Git (en français) :</strong> <a href="https://git-scm.com/book/fr/v2" target="_blank">https://git-scm.com/book/fr/v2</a></li>
+                    <li><strong>GitHub Guides :</strong> <a href="https://guides.github.com/" target="_blank">https://guides.github.com/</a></li>
+                    <li><strong>Tutoriel interactif Git :</strong> <a href="https://learngitbranching.js.org/?locale=fr_FR" target="_blank">https://learngitbranching.js.org/?locale=fr_FR</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <footer style="text-align: center; margin-top: 50px; padding: 30px; background-color: #f8f9fa; border-radius: 10px;">
+            <h3 style="color: #667eea;">Bonne collaboration !</h3>
+            <p style="margin-top: 15px; font-size: 1.1em;">Git est un outil puissant qui deviendra votre meilleur allié dans vos futurs projets informatiques.</p>
+            <p style="margin-top: 10px; color: #666;">Continuez à pratiquer et à explorer les fonctionnalités de Git. Plus vous l'utiliserez, plus vous serez à l'aise avec cet outil essentiel !</p>
+        </footer>
+
+    </div>
+</body>
+</html>
