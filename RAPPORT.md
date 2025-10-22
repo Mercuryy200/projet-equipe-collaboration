@@ -73,13 +73,18 @@ modifications du projet avec l'aide d'un graphique.
 
 ### Difficulté 1
 
-- **Problème** : [Décrivez le problème rencontré]
-- **Solution** : [Expliquez comment vous l'avez résolu]
+- **Problème** : J'ai mal écris un commit.
+- **Solution** : J'ai utiliser "git commit --amend", une fois
+le commit réécrit j'ai sauvegarder, fermer mon NotePad et j'ai fait "git push".
 
 ### Difficulté 2
 
-- **Problème** : [Décrivez le problème]
-- **Solution** : [Expliquez la solution trouvée]
+- **Problème** : Dans Partie 7/Situation 2, j'ai eu le message d'erreur attendu,
+  mais après la résolution du conflit, je ne pouvait plus commit et j'avais cette erreur:
+  "Your branch is ahead of 'origin/master' by 2 commits."
+- **Solution** : Git m'a proposer de "use 'git push' to publish your local commits"
+  et ça a fonctionner avec un commit généré par git disant :
+  "Merge branch 'master' of https://github.com/Mercuryy200/projet-equipe-collaboration"
 
 ## 5. Apprentissages
 
@@ -104,7 +109,7 @@ modifications du projet avec l'aide d'un graphique.
 - [Apprentissage 1]
   La communication est importante pour savoir si on peut pull
   le travail de quelqu'un ou si on devrait attendre qu'il ait
-  terminer ses tâches.
+  terminé ses tâches.
 - [Apprentissage 2]
   Il est important de travailler autant que possible sur des
   fichiers différents pour éviter les situations de conflits.
