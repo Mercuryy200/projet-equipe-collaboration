@@ -94,6 +94,12 @@ le commit réécrit j'ai sauvegarder, fermer mon NotePad et j'ai fait "git push"
   et ça a fonctionner avec un commit généré par git disant :
   "Merge branch 'master' of https://github.com/Mercuryy200/projet-equipe-collaboration"
 
+### Difficulté 3
+
+- **Problème** : Trouver une tache supplémentaire pour le membre 4.
+- **Solution** : J'ai fait quelques modifications pour avoir un commit pour le membre 4
+  et sinon j'ai ajouté une trace de plus dans les actions du membre 3.
+
 ## 5. Apprentissages
 
 ### Ce que nous avons appris sur Git
