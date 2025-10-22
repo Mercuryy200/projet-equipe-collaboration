@@ -13,19 +13,24 @@
 
 ## [Décrivez brièvement ce que vous avez fait et ce que vous avez appris]
 
-Le rajout d'un fichier pour énoncer mon nom et rôle dans ce projet.
+Membre 1: J’ai créé le dépôt local sur mon ordinateur avec la commande git init, puis ajouté un fichier README.md pour décrire le projet. Ensuite, j’ai fait mon premier commit avec git add et git commit. J’ai aussi créé le dépôt distant sur GitHub et relié les deux avec git remote add origin, avant d’envoyer le projet en ligne avec git push.
+
+Membre 2 et 3: Le rajout d'un fichier pour énoncer mon nom et rôle dans ce projet.
+
 Apprendre le début/configuration d'un projet GIT.
 
 ### Partie 2 : Ajout des collaborateurs
 
 ## [Décrivez le processus d'invitation et de clonage]
+Membre 1: Je me suis connecté à mon compte GitHub et je suis allé dans la section Settings puis Collaborators de notre dépôt. J’ai ensuite cliqué sur Add people, puis entré le nom d’utilisateur GitHub de chaque membre de l’équipe. Après avoir sélectionné leurs comptes, j’ai cliqué sur Add [nom] to this repository pour leur donner accès au projet.
 
-L'invitation se fait sur GitHub avec le nom des collaborateurs, de plus, sur vs code on copie
+Membre 2 et 3: L'invitation se fait sur GitHub avec le nom des collaborateurs, de plus, sur Visual studio Code on copie
 le lien html de GitHub du repository pour ainsi lier le répertoire entre GitHub et vscode.
 
 ### Partie 3 : Première collaboration
 
 ## [Expliquez comment vous avez créé vos fichiers individuels]
+Membre 1: J’ai créé un fichier nommé membre1.txt dans Visual Studio Code. J’y ai inscrit mon nom, mon rôle de chef d’équipe et mes responsabilités, puis j’ai enregistré et envoyé le fichier sur GitHub.
 
 En utilisant un git pull on prend le projet mis à jour et on rajoute nos propres
 tâches pour ensuite le envoyer la version corrigé pour que les autres collaborateurs ont accès.
@@ -41,6 +46,9 @@ actuelle qui contient une modification à la même place dans le fichier.
 ### Partie 5 : Collaboration HTML
 
 ## [Expliquez votre travail sur la page web]
+Membre 1: J’ai créé le fichier index.html dans Visual Studio Code. J’y ai ajouté la structure de base d’une page web avec le titre « Projet d’équipe » et un en-tête « Notre projet collaboratif ». J’ai ensuite enregistré et envoyé le fichier sur GitHub pour que les autres membres puissent compléter la page. L'ajout d'une section dans le fichier index.html, de plus, faire face à un push rejeté suite à un git pull inexistant avant la manipulation
+et comment résoudre ce problème en choisissant une des 2 versions disponible.
+
 
 L'ajout d'une section dans le fichier index.html, de plus, faire face
 à un push rejeté suite à un git pull inexistant avant la manipulation
@@ -49,9 +57,9 @@ et comment résoudre ce problème en choisissant une des 2 versions disponible.
 ### Partie 6 : Utilisation des branches
 
 ## [Décrivez la création et la fusion de la branche]
+Membre 1: J’ai créé une nouvelle branche appelée ajout-style pour ajouter un fichier style.css et relier cette feuille de style à la page index.html. Une fois les changements terminés, j’ai fusionné la branche ajout-style avec la branche principale main afin d’intégrer les nouveaux styles au projet. Enfin, j’ai envoyé les modifications sur GitHub pour que toute l’équipe puisse voir la page web mise à jour avec le design CSS.
 
-Le membre 1 crée une branche à partir du main pour intégrer un fichier
-de style. Ensuite, retourner dans le main pour merge la branche et git
+Membre 2 et 3: Ensuite, retourner dans le main pour merge la branche et git
 push pour que tous les membres puissent git pull et avoir le style.css
 
 ### Partie 7 : Situations réalistes
