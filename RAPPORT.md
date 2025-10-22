@@ -46,13 +46,10 @@ actuelle qui contient une modification à la même place dans le fichier.
 ### Partie 5 : Collaboration HTML
 
 ## [Expliquez votre travail sur la page web]
-Membre 1: J’ai créé le fichier index.html dans Visual Studio Code. J’y ai ajouté la structure de base d’une page web avec le titre « Projet d’équipe » et un en-tête « Notre projet collaboratif ». J’ai ensuite enregistré et envoyé le fichier sur GitHub pour que les autres membres puissent compléter la page. L'ajout d'une section dans le fichier index.html, de plus, faire face à un push rejeté suite à un git pull inexistant avant la manipulation
-et comment résoudre ce problème en choisissant une des 2 versions disponible.
+Membre 1: J’ai créé le fichier index.html dans Visual Studio Code. J’y ai ajouté la structure de base d’une page web avec le titre « Projet d’équipe » et un en-tête « Notre projet collaboratif ». J’ai ensuite enregistré et envoyé le fichier sur GitHub pour que les autres membres puissent compléter la page.
 
+L'ajout d'une section dans le fichier index.html, de plus, faire face à un push rejeté suite à un git pull inexistant avant la manipulation et comment résoudre ce problème en choisissant une des 2 versions disponible.
 
-L'ajout d'une section dans le fichier index.html, de plus, faire face
-à un push rejeté suite à un git pull inexistant avant la manipulation
-et comment résoudre ce problème en choisissant une des 2 versions disponible.
 
 ### Partie 6 : Utilisation des branches
 
