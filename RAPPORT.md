@@ -1,0 +1,121 @@
+# Rapport de laboratoire Git - Équipe [Les Tortues Ninja]
+
+## 1. Membres de l'équipe
+
+- Membre 1 : Rima Nafougui
+- Membre 2 : Julien Guibord
+- Membre 3 : Jimmy Chhan
+- Membre 4 : Charly Alcide Smith
+
+## 2. Résumé des parties complétées
+
+### Partie 1 : Configuration initiale
+
+## [Décrivez brièvement ce que vous avez fait et ce que vous avez appris]
+
+Le rajout d'un fichier pour énoncer mon nom et rôle dans ce projet.
+Apprendre le début/configuration d'un projet GIT.
+
+### Partie 2 : Ajout des collaborateurs
+
+## [Décrivez le processus d'invitation et de clonage]
+
+L'invitation se fait sur GitHub avec le nom des collaborateurs, de plus, sur vs code on copie
+le lien html de GitHub du repository pour ainsi lier le répertoire entre GitHub et vscode.
+
+### Partie 3 : Première collaboration
+
+## [Expliquez comment vous avez créé vos fichiers individuels]
+
+En utilisant un git pull on prend le projet mis à jour et on rajoute nos propres
+tâches pour ensuite le envoyer la version corrigé pour que les autres collaborateurs ont accès.
+
+### Partie 4 : Résolution de conflits
+
+## [Décrivez le conflit rencontré et comment vous l'avez résolu]
+
+La section 4 voulait faire en sorte que le membre 1 et 2 entre en conflit
+puisque sans git pull du 2e membre sa modification entre en conflit avec la version
+actuelle qui contient une modification à la même place dans le fichier.
+
+### Partie 5 : Collaboration HTML
+
+## [Expliquez votre travail sur la page web]
+
+L'ajout d'une section dans le fichier index.html, de plus, faire face
+à un push rejeté suite à un git pull inexistant avant la manipulation
+et comment résoudre ce problème en choisissant une des 2 versions disponible.
+
+### Partie 6 : Utilisation des branches
+
+## [Décrivez la création et la fusion de la branche]
+
+Le membre 1 crée une branche à partir du main pour intégrer un fichier
+de style. Ensuite, retourner dans le main pour merge la branche et git
+push pour que tous les membres puissent git pull et avoir le style.css
+
+### Partie 7 : Situations réalistes
+
+## [Résumez les différentes situations expérimentées]
+
+Premièrement une situation qui ne possède pas de conflit puisque
+les modifications ont été fait dans 2 fichiers différents.
+Deuxièmement, effectuer une manipulation où le git pull n'a pas été
+fait au début. Troisièmement, effectuer une manipulation pour savoir
+comment annuler un commit. Finalement, obtenir un historique de tous les
+modifications du projet avec l'aide d'un graphique.
+
+## 3. Captures d'écran
+
+(Dans les dossiers de chaque membre)
+
+## 4. Difficultés rencontrées
+
+### Difficulté 1
+
+- **Problème** : [Décrivez le problème rencontré]
+- **Solution** : [Expliquez comment vous l'avez résolu]
+
+### Difficulté 2
+
+- **Problème** : [Décrivez le problème]
+- **Solution** : [Expliquez la solution trouvée]
+
+## 5. Apprentissages
+
+### Ce que nous avons appris sur Git
+
+- [Apprentissage 1]
+  Il est important de faire un git pull avant de travailler,
+  sinon des situations de conflit peuvent survenir.
+
+- [Apprentissage 2]
+  Lors d'un conflit, on peut accepter une des deux versions,
+  ou accepter les deux versions en même temps, puis faire un
+  commit qui décris la résolution.
+
+- [Apprentissage 3]
+  Les branches permettent de travailler indépendement de la
+  vraie version du programme et donc d'éviter les situations
+  de conflit.
+
+### Ce que nous avons appris sur le travail d'équipe
+
+- [Apprentissage 1]
+  La communication est importante pour savoir si on peut pull
+  le travail de quelqu'un ou si on devrait attendre qu'il ait
+  terminer ses tâches.
+- [Apprentissage 2]
+  Il est important de travailler autant que possible sur des
+  fichiers différents pour éviter les situations de conflits.
+
+## 6. Conclusion
+
+## [Rédigez une courte conclusion (5-10 lignes) sur votre expérience globale du laboratoire]
+
+L'expérience de ce laboratoire était bien puisqu'il nous montrait comment manipuler certaines
+commandes git avec la collaboration de GitHub et savoir l'importance des étapes à suivre pour
+travailler en équipe. De plus, simuler des situations qui peuvent arriver, par exemple: oublier
+de faire un git pull avant de faire des modifications, savoir comment travailler en équipe
+avec des git push git pull, travailler sur des branches + merge et comment gérer des conflits
+entre commits.
